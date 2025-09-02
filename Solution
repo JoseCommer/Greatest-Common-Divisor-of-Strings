@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <numeric> // For std::gcd in C++17+
+
+using namespace std;
+
+string gcdOfStrings(string str1, string str2) {
+    // Step 1: Check if concatenation condition is satisfied
+    if (str1 + str2 != str2 + str1)
+        return "";
+
+    // Step 2: Compute the GCD of the lengths
+    int gcdLength = gcd(str1.size(), str2.size());
+
+    // Step 3: Return the prefix of either string with the length of the GCD
+    return str1.substr(0, gcdLength);
+}
+
+int main() {
+    // Test cases
+    cout << gcdOfStrings("ABCABC", "ABC") << endl;    // Output: "ABC"
+    cout << gcdOfStrings("ABABAB", "ABAB") << endl;    // Output: "AB"
+    cout << gcdOfStrings("LEET", "CODE") << endl;      // Output: ""
+    return 0;
+}
